@@ -19,6 +19,7 @@ venda_na = base.iloc[:, 4].values
 venda_eu = base.iloc[:, 5].values
 venda_jp = base.iloc[:, 6].values
 
+'''
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
 labelencoder = LabelEncoder()
@@ -27,19 +28,35 @@ previsores[:, 2] = labelencoder.fit_transform(previsores[:, 2])
 previsores[:, 3] = labelencoder.fit_transform(previsores[:, 3])
 previsores[:, 8] = labelencoder.fit_transform(previsores[:, 8])
 
+'''
+
 #onehotencoder = OneHotEncoder(categorical_features = [0,2,3,8])
 #previsores = onehotencoder.fit_transform(previsores).toarray()
 
-#ERRO! O CÓDIGO ATUALIZADO SE ENCONTRA NA PASTA BAIXADA DE CONSIDERAÇÕES FINAIS.
-#PORÉM AINDA SIM HÁ UM ERRO, SUSPEITO QUE SEJA A VERSÃO DO DAS BIBLIOTECAS, AGUARDANDO RESPOSTA DOS INSTRUTORES
+#ERRO! O CÓDIGO ATUALIZADO SE ENCONTRA NA PASTA BAIXADA DE CONSIDERAÇÕES FINAIS, COLOQUEI O TRECHO ABAIXO.
+'''
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+onehotencoder = ColumnTransformer(transformers=[("OneHot", OneHotEncoder(), [0,2,3,8])],remainder='passthrough')
+previsores = onehotencoder.fit_transform(previsores).toarray()
+'''
+#PORÉM AINDA SIM HÁ UM ERRO, SUSPEITO QUE SEJA A VERSÃO DAS BIBLIOTECAS, AGUARDANDO RESPOSTA DOS INSTRUTORES
 
-#SE UTILIZAR DESTA MANEIRA, IRÉ FUNCIONAR
+#SE UTILIZAR DESTA MANEIRA, IRÁ FUNCIONAR
 #onehotencoder = OneHotEncoder(categorical_features = [0,2,3,8], n_values='auto')
 
 #Darei continuidade, usando a solução acima, ainda que esteja ultrapassada, obsoleta, Deprecation
 
-onehotencoder = OneHotEncoder(categorical_features = [0,2,3,8], n_values='auto')
+
+###########################ACHO QUE CONSEGUIIIII!!!######################################### ATUALIZEI PARA O SCIKIT-LEARN 0.20.1
+
+
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+
+onehotencoder = ColumnTransformer(transformers=[("OneHot", OneHotEncoder(), [0,2,3,8])],remainder='passthrough')
 previsores = onehotencoder.fit_transform(previsores).toarray()
+
 
 camada_entrada = Input(shape=(61,)) #numero de entradas
 camada_oculta1 = Dense(units=32, activation='sigmoid')(camada_entrada)
