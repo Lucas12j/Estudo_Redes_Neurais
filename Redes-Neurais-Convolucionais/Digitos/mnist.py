@@ -10,8 +10,8 @@ from keras.layers.normalization import BatchNormalization
 plt.imshow(X_treinamento[7], cmap= 'gray')
 
 #ETAPA NECESSÁRIO PARA O TENSOR FLOW ENTENDER
-previsores_treinamento = X_treinamento.reshape(X_treinamento.shape[0], 28, 28, 1)
-previsores_teste = X_teste.reshape(X_teste.shape[0], 28, 28, 1)
+previsores_treinamento = X_treinamento.reshape(X_treinamento.shape[0], 28, 28,1)
+previsores_teste = X_teste.reshape(X_teste.shape[0], 28, 28,1)
 
 #CONVERSÃO PARA FLOAT
 previsores_treinamento = previsores_treinamento.astype('float32')
