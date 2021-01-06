@@ -28,6 +28,7 @@ classificador.add(Conv2D(32, (3,3),
                          activation = 'relu'))
 classificador.add(BatchNormalization())
 classificador.add(MaxPooling2D(pool_size = (2,2)))
+
 #classificador.add(Flatten())
 
 classificador.add(Conv2D(32, (3,3), activation = 'relu'))

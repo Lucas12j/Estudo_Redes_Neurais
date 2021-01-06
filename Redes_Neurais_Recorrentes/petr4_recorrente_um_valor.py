@@ -34,7 +34,7 @@ previsores = np.reshape(previsores, (len(previsores), len(previsores[0]), 1))
 #Criação da rede
 regressor = Sequential()
 
-regressor.add(LSTM(units = 100, return_sequences = True))
+regressor.add(LSTM(units = 100, return_sequences = True, input_shape = (previsores.shape[1], 1 )))
 regressor.add(Dropout(0.3))
 
 regressor.add(LSTM(units = 50, return_sequences = True))
